@@ -16,6 +16,16 @@ angular.module('odoo').provider('jsonRpc', function jsonRpcProvider() {
 		var odooRpc = this.odooRpc;
 
 		/**
+		* get_database_list
+		*		Return availables database list
+		*/
+		odooRpc.get_database_list = function() {
+			return odooRpc.sendRequest('/web/database/get_list', {}).then(function(result) {
+				return result;
+			});
+		};
+
+		/**
 		* login
 		*		update cookie (session_id) in both cases
 		* @return promise
